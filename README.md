@@ -10,7 +10,7 @@
 7. *MK.Logging* - A logging library that is currently based on Enterprise Library Logging Application Block.
 8. *MK.MyMath* - A library that contains math algoritihms and data structures.
 9. *MK.Scripting* - A scripting engine for C# based on *Mono.CSharp* project.
-10. *MK.Settings* - A library that makes managing settings easily. Firstly you should use ```SettingsProperty``` attribute to to mark properties that should be persisted. Then you should use ```SettingsProvider``` either to extract/object values from/into a given object.
+10. *MK.Settings* - A library that makes managing settings easily. Firstly you should use ```SettingsProperty``` attribute to to mark properties that should be persisted. Then you should use ```SettingsProvider``` either to extract/inject values from/into a given object.
 11. *MK.UI.WPF* - Various WPF controls, behaviours and converters. A library also contains MVVM helpers.
 12. *MK.Utilities* - Various things that are too small for individual libraries. For example: extension methods, an encryption helper, an object dumper...
-13. *WPFLocalizeExtension* - This project is based on the old version of WPFLocalisationExtension project that was available on codeplex (http://wpflocalizeextension.codeplex.com/).
+13. *WPFLocalizeExtension* - This project is based on the old version of *WPFLocalisationExtension* project that was available on codeplex (http://wpflocalizeextension.codeplex.com/).
