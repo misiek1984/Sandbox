@@ -1,5 +1,5 @@
 # Common
-*Common* solution is a collection of libraries, utilities, algorithms, helpers etc. (written in C#) that are used by my other projects. Here is a short description of them:
+*Common* solution is a collection of libraries, utilities, algorithms, helpers etc. (written in C#) that are used in my other projects. Here is a short description of them:
 
 1. *MK.Compression* - A library that allows one to pack/unpack data. I implemented it before ```System.IO.Compression.ZipFile``` class was added to .NET framework.
 2. *MK.Data* - This library contains a basic classes and interfaces related to data persistence.
