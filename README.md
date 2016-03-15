@@ -15,8 +15,8 @@
 12. *MK.Utilities* - Various things that are too small for individual libraries. For example: extension methods, an encryption helper, an object dumper...
 13. *WPFLocalizeExtension* - This project is based on the old version of [WPFLocalisationExtension][5] project that was available on codeplex.
 
-[1] https://msdn.microsoft.com/en-us//library/system.io.compression.zipfile(v=vs.110).aspx
-[2] https://www.nuget.org/packages/DropNet
-[3] https://www.nuget.org/packages/LiveSDK
-[4] https://www.nuget.org/packages/EnterpriseLibrary.Logging/
-[5] http://wpflocalizeextension.codeplex.com/
+[1]: https://msdn.microsoft.com/en-us//library/system.io.compression.zipfile(v=vs.110).aspx
+[2]: https://www.nuget.org/packages/DropNet
+[3]: https://www.nuget.org/packages/LiveSDK
+[4]: https://www.nuget.org/packages/EnterpriseLibrary.Logging/
+[5]: http://wpflocalizeextension.codeplex.com/
