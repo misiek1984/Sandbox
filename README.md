@@ -9,7 +9,7 @@
 6. *MK.Live* - A library based on [Microsoft.Live][3] project facilitates communication with SkyDrive.
 7. *MK.Logging* - A logging library that is currently based on [Enterprise Library Logging Application Block][4].
 8. *MK.MyMath* - A library that contains math algoritihms and data structures.
-9. *MK.Scripting* - A scripting engine for C# based on *Mono.CSharp* project.
+9. *MK.Scripting* - A scripting engine for C# based on [Mono.CSharp][5] project.
 10. *MK.Settings* - A library that makes managing settings easily. Firstly you should use ```SettingsProperty``` attribute to to mark properties that should be persisted. Then you should use ```SettingsProvider``` either to extract/inject values from/into a given object.
 11. *MK.UI.WPF* - Various WPF controls, behaviours and converters. A library also contains MVVM helpers.
 12. *MK.Utilities* - Various things that are too small for individual libraries. For example: extension methods, an encryption helper, an object dumper...
@@ -19,4 +19,5 @@
 [2]: https://www.nuget.org/packages/DropNet
 [3]: https://www.nuget.org/packages/LiveSDK
 [4]: https://www.nuget.org/packages/EnterpriseLibrary.Logging/
-[5]: http://wpflocalizeextension.codeplex.com/
+[5]: https://www.nuget.org/packages/Mono.CSharp
+[6]: http://wpflocalizeextension.codeplex.com/
