@@ -1,0 +1,25 @@
+﻿<Window x:Class="MVVMLight.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" 
+        xmlns:l="clr-namespace:GalaSoft;assembly=GalaSoft.MvvmLight"
+        Height="350" Width="525"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <StackPanel>
+        <Label Content="{Binding Message}"></Label>
+        <TextBox Text="{Binding Input}"></TextBox>
+        <Button Command="{Binding NewNumber}">New number</Button>
+        <Button Content="Check" Command="{Binding Check}" Foreground="{Binding Color}" FontWeight="Bold">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=MouseEnter}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseLeave">
+                    <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=MouseLeave}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </StackPanel>
+</Window>

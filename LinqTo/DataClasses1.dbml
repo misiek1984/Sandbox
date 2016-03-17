@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ExecutionTraceDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=ExecutionTraceDB;Integrated Security=True" SettingsObjectName="LinqTo.Properties.Settings" SettingsPropertyName="ExecutionTraceDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Types" Member="Types">
+    <Type Name="Type">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="NamespaceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NamespaceUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Type_Exception" Member="Exceptions" ThisKey="Id" OtherKey="TypeId" Type="Exception" />
+      <Association Name="Type_Parameter" Member="Parameters" ThisKey="Id" OtherKey="TypeId" Type="Parameter" />
+      <Association Name="Type_Subprogram" Member="Subprograms" ThisKey="Id" OtherKey="ContainingTypeId" Type="Subprogram" />
+      <Association Name="Type_Subprogram1" Member="Subprograms1" ThisKey="Id" OtherKey="ReturnTypeId" Type="Subprogram" />
+      <Association Name="ExecutionTrace_Type" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+      <Association Name="Namespace_Type" Member="Namespace" ThisKey="NamespaceId" OtherKey="Id" Type="Namespace" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Calls" Member="Calls">
+    <Type Name="Call">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EnterOrdinal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ExitOrdinal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ParentCallId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubprogramId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubprogramFullName" Type="System.String" DbType="VarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentSubprogramId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ParentSubprogramFullName" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="ReturnValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParametersValues" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="NumberOfThrownExceptions" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfCoughtExceptions" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Thread" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CallStackDepth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubprogramUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ParentSubprogramUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LocalId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ParentLocalCallId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ExecutionTimeStart" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ExecutionTimeEnd" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Association Name="Call_Call" Member="Calls" ThisKey="Id" OtherKey="ParentCallId" Type="Call" />
+      <Association Name="Call_Exception" Member="Exceptions" ThisKey="Id" OtherKey="CallId" Type="Exception" />
+      <Association Name="Call_ParametersValue" Member="ParametersValues1" ThisKey="Id" OtherKey="CallId" Type="ParametersValue" />
+      <Association Name="Call_PatternsCall" Member="PatternsCalls" ThisKey="Id" OtherKey="CallId" Type="PatternsCall" />
+      <Association Name="Call_Call" Member="Call1" ThisKey="ParentCallId" OtherKey="Id" Type="Call" IsForeignKey="true" />
+      <Association Name="ExecutionTrace_Call" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+      <Association Name="Subprogram_Call" Member="Subprogram" ThisKey="SubprogramId" OtherKey="Id" Type="Subprogram" IsForeignKey="true" />
+      <Association Name="Subprogram_Call1" Member="Subprogram1" ThisKey="ParentSubprogramId" OtherKey="Id" Type="Subprogram" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Events" Member="Events">
+    <Type Name="Event">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ordinal" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Subprogram" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Event" Member="Event1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Thread" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubprogramId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubprogramUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="ExecutionTrace_Event" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+      <Association Name="Subprogram_Event" Member="Subprogram1" ThisKey="SubprogramId" OtherKey="Id" Type="Subprogram" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Exceptions" Member="Exceptions">
+    <Type Name="Exception">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CallId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TypeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="Call_Exception" Member="Call" ThisKey="CallId" OtherKey="Id" Type="Call" IsForeignKey="true" />
+      <Association Name="Type_Exception" Member="Type" ThisKey="TypeId" OtherKey="Id" Type="Type" IsForeignKey="true" />
+      <Association Name="ExecutionTrace_Exception" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExecutionTraces" Member="ExecutionTraces">
+    <Type Name="ExecutionTrace">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Experiment" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Msg" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="NumberOfEvents" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="ExecutionTrace_Type" Member="Types" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Type" />
+      <Association Name="ExecutionTrace_Call" Member="Calls" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Call" />
+      <Association Name="ExecutionTrace_Event" Member="Events" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Event" />
+      <Association Name="ExecutionTrace_Exception" Member="Exceptions" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Exception" />
+      <Association Name="ExecutionTrace_Message" Member="Messages" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Message" />
+      <Association Name="ExecutionTrace_Namespace" Member="Namespaces" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Namespace" />
+      <Association Name="ExecutionTrace_Parameter" Member="Parameters" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Parameter" />
+      <Association Name="ExecutionTrace_ParametersValue" Member="ParametersValues" ThisKey="Id" OtherKey="ExecutionTraceId" Type="ParametersValue" />
+      <Association Name="ExecutionTrace_ProcessInfo" Member="ProcessInfos" ThisKey="Id" OtherKey="ExecutionTraceId" Type="ProcessInfo" />
+      <Association Name="ExecutionTrace_Subprogram" Member="Subprograms" ThisKey="Id" OtherKey="ExecutionTraceId" Type="Subprogram" />
+      <Association Name="ExecutionTrace_SystemInfo" Member="SystemInfos" ThisKey="Id" OtherKey="ExecutionTraceId" Type="SystemInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Messages" Member="Messages">
+    <Type Name="Message">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Msg" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="DateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="ExecutionTrace_Message" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Namespaces" Member="Namespaces">
+    <Type Name="Namespace">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Namespace_Type" Member="Types" ThisKey="Id" OtherKey="NamespaceId" Type="Type" />
+      <Association Name="ExecutionTrace_Namespace" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parameters" Member="Parameters">
+    <Type Name="Parameter">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SubprogramId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TypeUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubprogramUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Parameter_ParametersValue" Member="ParametersValues" ThisKey="Id" OtherKey="ParameterId" Type="ParametersValue" />
+      <Association Name="ExecutionTrace_Parameter" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+      <Association Name="Type_Parameter" Member="Type" ThisKey="TypeId" OtherKey="Id" Type="Type" IsForeignKey="true" />
+      <Association Name="Subprogram_Parameter" Member="Subprogram" ThisKey="SubprogramId" OtherKey="Id" Type="Subprogram" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParametersValues" Member="ParametersValues">
+    <Type Name="ParametersValue">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CallId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ParameterId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="Call_ParametersValue" Member="Call" ThisKey="CallId" OtherKey="Id" Type="Call" IsForeignKey="true" />
+      <Association Name="ExecutionTrace_ParametersValue" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+      <Association Name="Parameter_ParametersValue" Member="Parameter" ThisKey="ParameterId" OtherKey="Id" Type="Parameter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patterns" Member="Patterns">
+    <Type Name="Pattern">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Length" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoOfDifferentSubprograms" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoOfRoots" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SizeOfContext" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Pattern_PatternsCall" Member="PatternsCalls" ThisKey="Id" OtherKey="PatternId" Type="PatternsCall" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatternsCalls" Member="PatternsCalls">
+    <Type Name="PatternsCall">
+      <Column Name="PatternId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CallId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Call_PatternsCall" Member="Call" ThisKey="CallId" OtherKey="Id" Type="Call" IsForeignKey="true" />
+      <Association Name="Pattern_PatternsCall" Member="Pattern" ThisKey="PatternId" OtherKey="Id" Type="Pattern" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProcessInfo" Member="ProcessInfos">
+    <Type Name="ProcessInfo">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProcessBitWidth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessCommandLine" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="ProcessCreationTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProcessId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessName" Type="System.String" DbType="VarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="SessionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="ExecutionTrace_ProcessInfo" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Subprograms" Member="Subprograms">
+    <Type Name="Subprogram">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ContainingTypeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnTypeId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfParameters" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NumberOfCalls" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="UniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ContainingTypeUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ReturnTypeUniqueId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Subprogram_Call" Member="Calls" ThisKey="Id" OtherKey="SubprogramId" Type="Call" />
+      <Association Name="Subprogram_Call1" Member="Calls1" ThisKey="Id" OtherKey="ParentSubprogramId" Type="Call" />
+      <Association Name="Subprogram_Event" Member="Events" ThisKey="Id" OtherKey="SubprogramId" Type="Event" />
+      <Association Name="Subprogram_Parameter" Member="Parameters" ThisKey="Id" OtherKey="SubprogramId" Type="Parameter" />
+      <Association Name="ExecutionTrace_Subprogram" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+      <Association Name="Type_Subprogram" Member="Type" ThisKey="ContainingTypeId" OtherKey="Id" Type="Type" IsForeignKey="true" />
+      <Association Name="Type_Subprogram1" Member="Type1" ThisKey="ReturnTypeId" OtherKey="Id" Type="Type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SystemInfo" Member="SystemInfos">
+    <Type Name="SystemInfo">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AvailablePageFileBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AvailablePhysicalBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AvailableVirtualMemoryBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="BiosDate" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BiosVersion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClrVersion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ComputerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="IsWow64Process" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NumberOfProcessors" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSBuildNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSMajorVersion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSMinorVersion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSProductType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OSRole" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessorArchitecture" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessorLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessorRevision" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcessorSpeed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicePack" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SystemDirectory" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="SystemLocaleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SystemManufacturer" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="SystemProductName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="TimerFrequency" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TimerStartTime" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TimeZone" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TimeZoneBias" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalPageFileBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalPhysicalBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalVirtualMemoryBytes" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UserDomain" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="WindowsDirectory" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ExecutionTraceId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="ExecutionTrace_SystemInfo" Member="ExecutionTrace" ThisKey="ExecutionTraceId" OtherKey="Id" Type="ExecutionTrace" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
