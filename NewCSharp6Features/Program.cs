@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 //Do not use Console prefix
 using static System.Console;
 
-//Import specific class with extenion methos from a namespace
+//Import specific class with extension methos from a namespace
 using static A.Extensions;
 
 namespace NewCSharp6Features
@@ -36,7 +36,6 @@ namespace NewCSharp6Features
             System.IFormattable s2 = $"Hello, {cat.Name}";
             System.FormattableString  s3= $"Hello, {cat.Name}";
 
-
             //nameof
             Console.WriteLine(nameof(cat));
             Console.WriteLine(nameof(Program));
@@ -59,7 +58,6 @@ namespace NewCSharp6Features
             };
 
             //Exception filters
-
             try
             {
                 throw new Exception("aaaa");
@@ -68,9 +66,6 @@ namespace NewCSharp6Features
             {
                 WriteLine(ex.Message);
             }
-
-
-        
 
             Console.ReadLine();
         }
@@ -84,8 +79,6 @@ namespace A
     {
         //Expression Bodied Methods 
         public static string Fun(this string s) => "Fun" + s;
-
-        
     }
 
     public static class Extensions2
