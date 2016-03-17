@@ -1,0 +1,6 @@
+{
+  "Config": {
+    "WebSocketServerAddress": "ws://localhost:8733/WebSocketService_HttpListener/",
+    "WebSocketWCFServerAddress": "ws://localhost:8733/WebSocketService_WCF_ForJS/"
+  }
+}

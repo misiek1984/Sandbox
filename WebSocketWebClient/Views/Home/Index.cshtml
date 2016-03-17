@@ -1,0 +1,42 @@
+﻿@model WebSocketWebClient.Models.IndexVM
+
+<script type="text/javascript">
+    function check(ws) {
+        if (ws.readyState == WebSocket.OPEN) {
+            ws.send("Hello from JS!");
+        }
+        else
+            setTimeout(check, 1000, ws);
+    }
+
+    $(document).ready(function () {
+        var address1 = '@Model.WebSocketWCFServerAddress';
+        var address2 = '@Model.WebSocketServerAddress';
+
+        var ws = new WebSocket(address1);
+      
+        setTimeout(check, 1000, ws);
+
+        ws.onmessage = function (event) {        
+            $("#wcfCounter").text(event.data);
+        }
+
+        var ws = new WebSocket(address2);
+
+        ws.onmessage = function (event) {
+            $("#counter").text(event.data);
+        }
+    });
+</script>
+
+<div>
+   WCF Counter: <label id="wcfCounter"></label>
+</div>
+
+<div>
+   Counter: <label id="counter"></label>
+</div>
+
+
+
+
