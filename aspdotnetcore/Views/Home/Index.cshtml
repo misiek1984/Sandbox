@@ -1,0 +1,13 @@
+﻿@model  Test.ViewModels.HomeVM
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <br />
+    <label asp-for="DateTime"></label>
+    <input asp-for="DateTime" />
+    <br />
+    @Component.Invoke("Test")
+}

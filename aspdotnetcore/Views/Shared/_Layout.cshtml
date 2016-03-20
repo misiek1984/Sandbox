@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <environment names="Development">
+        @* Import styles, java script files *@
+    </environment>
+    <environment names="Staging, Production">
+        @* Import minified styles, java script files *@
+    </environment>
+</head>
+<body>
+    <div>
+        <environment names="Development">
+            Development
+        </environment>
+        <environment names="Staging, Production">
+            Staging, Production
+        </environment>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
