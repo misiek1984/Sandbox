@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Diagnostics;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Routing;
-using Microsoft.Framework.Configuration;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Logging;
-using Microsoft.Framework.Logging.Console;
-using Microsoft.Framework.Runtime;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebSocketWebClient
 {
@@ -20,7 +13,7 @@ namespace WebSocketWebClient
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
             // Setup configuration sources.
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
+            var builder = new ConfigurationBuilder()
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
 
@@ -34,7 +27,7 @@ namespace WebSocketWebClient
         {
             // Add MVC services to the services container.
             services.AddMvc();
-            services.Configure<Config>(Configuration.GetConfigurationSection("Config"));
+            services.Configure<Config>(Configuration.GetSection("Config"));
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
@@ -53,13 +46,13 @@ namespace WebSocketWebClient
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
-                app.UseErrorPage(ErrorPageOptions.ShowAll);
+                app.UseDeveloperExceptionPage();
             }
             else
             {
                 // Add Error handling middleware which catches all application specific errors and
                 // send the request to the following path or controller action.
-                app.UseErrorHandler("/Home/Error");
+                app.UseDeveloperExceptionPage();
             }
 
             // Add static files to the request pipeline.

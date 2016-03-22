@@ -22,8 +22,7 @@
     "runWebListener": "run --server Microsoft.AspNet.Server.WebListener server.urls=http://localhost:50003",
     "hostingKestrel": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:50004",
     "hostingWebListener": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:50005",
-    "test": "Test --server Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:50006 --ASPNET_ENV Development"
-
+    "test": "aspdotnetcore --server Microsoft.AspNet.Server.Kestrel --server.urls http://localhost:50006 --ASPNET_ENV Development"
   },
 
   "frameworks": {

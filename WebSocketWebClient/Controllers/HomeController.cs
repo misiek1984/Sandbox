@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.OptionsModel;
+﻿using Microsoft.AspNet.Mvc;
 using WebSocketWebClient.Models;
+using Microsoft.Extensions.OptionsModel;
 
 namespace WebSocketWebClient.Controllers
 {
@@ -21,8 +17,8 @@ namespace WebSocketWebClient.Controllers
         {
             return View(new IndexVM
             {
-                WebSocketWCFServerAddress = _webSocketServerAddress.Options.WebSocketWCFServerAddress,
-                WebSocketServerAddress = _webSocketServerAddress.Options.WebSocketServerAddress
+                WebSocketWCFServerAddress = _webSocketServerAddress.Value.WebSocketWCFServerAddress,
+                WebSocketServerAddress = _webSocketServerAddress.Value.WebSocketServerAddress
             });
         }
 
