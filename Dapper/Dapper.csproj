@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="MK.Utilities">
-      <HintPath>..\..\Common\bin\Debug\MK.Utilities.dll</HintPath>
+      <HintPath>..\..\Common\bin\$(Configuration)\MK.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
