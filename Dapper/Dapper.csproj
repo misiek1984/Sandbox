@@ -52,9 +52,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Tasks.v4.0" />
-    <Reference Include="MK.Utilities">
-      <HintPath>..\..\Common\bin\$(Configuration)\MK.Utilities.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
@@ -72,6 +69,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\MK.Utilities\MK.Utilities.csproj">
+      <Project>{a2c7083e-bfc4-4f7b-99bc-b0c437924484}</Project>
+      <Name>MK.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
