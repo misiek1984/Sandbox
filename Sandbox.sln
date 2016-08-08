@@ -58,6 +58,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.Utilities", "Common\MK.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.Logging", "Common\MK.Logging\MK.Logging.csproj", "{865745F2-B7B2-4940-B99D-7239757FF8D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.Utilities.Tests", "Common\MK.Utilities.Tests\MK.Utilities.Tests.csproj", "{17067FDD-DAAD-4753-97A1-6E2E8863412E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -148,6 +150,10 @@ Global
 		{865745F2-B7B2-4940-B99D-7239757FF8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{865745F2-B7B2-4940-B99D-7239757FF8D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{865745F2-B7B2-4940-B99D-7239757FF8D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17067FDD-DAAD-4753-97A1-6E2E8863412E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17067FDD-DAAD-4753-97A1-6E2E8863412E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17067FDD-DAAD-4753-97A1-6E2E8863412E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17067FDD-DAAD-4753-97A1-6E2E8863412E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -167,5 +173,6 @@ Global
 		{A3AE9F20-19ED-4912-B49D-ECBEB7E64F93} = {3E479C1D-8E17-4846-BFD6-DF74481B43B5}
 		{A2C7083E-BFC4-4F7B-99BC-B0C437924484} = {F9C22745-CF7F-48D8-995A-CA77415F0EBC}
 		{865745F2-B7B2-4940-B99D-7239757FF8D2} = {F9C22745-CF7F-48D8-995A-CA77415F0EBC}
+		{17067FDD-DAAD-4753-97A1-6E2E8863412E} = {F9C22745-CF7F-48D8-995A-CA77415F0EBC}
 	EndGlobalSection
 EndGlobal
