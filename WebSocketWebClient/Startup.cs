@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Diagnostics;
-using Microsoft.AspNet.Hosting;
+﻿using System.IO;
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,35 +10,33 @@ namespace WebSocketWebClient
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IHostingEnvironment env)
         {
             // Setup configuration sources.
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("config.json")
-                .AddEnvironmentVariables();
+              .SetBasePath(env.ContentRootPath)
+              .AddJsonFile("Config.json", optional: true, reloadOnChange: true)
+              .AddJsonFile($"Config.{env.EnvironmentName}.json", optional: true)
+              .AddEnvironmentVariables();
 
             Configuration = builder.Build();
         }
-
-        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add MVC services to the services container.
             services.AddMvc();
-            services.Configure<Config>(Configuration.GetSection("Config"));
-
-            // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
-            // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
-            // services.AddWebApiConventions();
+            services.AddOptions();
+            services.Configure<Config>(Configuration.GetSection("Config"));       
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Information;
-            loggerFactory.AddConsole();
+            loggerFactory.AddConsole(minLevel: LogLevel.Information);
 
             // Configure the HTTP request pipeline.
 
@@ -68,6 +66,19 @@ namespace WebSocketWebClient
                 // Uncomment the following line to add a route for porting Web API 2 controllers.
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
+        }
+
+        // Entry point for the application.
+        public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
         }
     }
 }

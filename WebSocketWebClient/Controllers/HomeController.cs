@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+
 using WebSocketWebClient.Models;
-using Microsoft.Extensions.OptionsModel;
 
 namespace WebSocketWebClient.Controllers
 {

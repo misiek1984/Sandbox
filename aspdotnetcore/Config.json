@@ -1,4 +1,6 @@
 ﻿{
-  "Option1": "ABC",
-  "Option2": 1
+  "Config": {
+    "Option1": "ABC",
+    "Option2": 1
+  }
 }

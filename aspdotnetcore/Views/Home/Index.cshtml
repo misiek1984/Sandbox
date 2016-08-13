@@ -9,5 +9,5 @@
     <label asp-for="DateTime"></label>
     <input asp-for="DateTime" />
     <br />
-    @Component.Invoke("Test")
+    @Component.InvokeAsync("Test").Result
 }

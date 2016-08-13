@@ -1,25 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.IO;
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 using Test.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Test
 {
     public class Startup
     {
-        private IHostingEnvironment _hosting;
+        public IConfiguration Configuration { get; set; }
 
         public Startup(IHostingEnvironment hosting)
         {
-            _hosting = hosting;
+            // Setup configuration sources.
+            var builder = new ConfigurationBuilder()
+              .SetBasePath(hosting.ContentRootPath)
+              .AddJsonFile("Config.json", optional: true, reloadOnChange: true)
+              .AddJsonFile($"Config.{hosting.EnvironmentName}.json", optional: true)
+              .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -27,29 +31,22 @@ namespace Test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            services.AddOptions();
+            services.Configure<ConfigModel>(Configuration.GetSection("Config"));
             services.AddSingleton<IHomeModel, HomeModel>();
-
-            var root =
-              new ConfigurationBuilder().
-              AddJsonFile("Config.json").
-              Build();
-
-            //???
-            //services.AddOptions(); 
-            services.Configure<ConfigModel>(root);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, ILoggerFactory log)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory log)
         {
             log.AddConsole(minLevel: LogLevel.Information);
             var logger = log.CreateLogger("test");
 
-            if (_hosting.IsDevelopment())
+            if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseIISPlatformHandler();
+            //I has been using it before I migrated project do dotnet CLI
+            //app.UseIISPlatformHandler();
             app.UseMvcWithDefaultRoute();
             //app.UseMvc(routes =>
             //{
@@ -89,7 +86,14 @@ namespace Test
         // Entry point for the application.
         public static void Main(string[] args)
         {
-            WebApplication.Run<Startup>(args);
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
         }
     }
 }
