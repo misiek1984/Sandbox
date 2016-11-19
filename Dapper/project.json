@@ -1,0 +1,15 @@
+﻿{
+  "dependencies": {
+    "Dapper": "1.38",
+    "Dapper.Fluent": "1.0.0.0",
+    "Dapper.SimpleCRUD": "1.8.7",
+    "Dapper.Tvp": "1.0.0"
+  },
+  "frameworks": {
+    "net46": {}
+  },
+  "supports": {},
+  "runtimes": {
+    "win": {}
+  }
+}

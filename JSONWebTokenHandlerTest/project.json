@@ -1,0 +1,12 @@
+﻿{
+  "dependencies": {
+    "System.IdentityModel.Tokens.Jwt": "4.0.2.206221351"
+  },
+  "frameworks": {
+    "net46": {}
+  },
+  "supports": {},
+  "runtimes": {
+    "win": {}
+  }
+}

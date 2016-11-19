@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automapper", "Automapper\Automapper.csproj", "{35BD6DA2-4DDE-4420-88A6-BE44942CD813}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomapperTest", "Automapper\AutomapperTest.csproj", "{35BD6DA2-4DDE-4420-88A6-BE44942CD813}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper", "Dapper\Dapper.csproj", "{872E7B5D-E658-4596-B4A7-3674F76C4681}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTest", "Dapper\DapperTest.csproj", "{872E7B5D-E658-4596-B4A7-3674F76C4681}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTo", "LinqTo\LinqTo.csproj", "{22F1EE83-A82B-4458-99C5-142170717F85}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePublisher", "Message
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageSubscriber", "MessageSubscriber\MessageSubscriber.csproj", "{469F0D32-64AC-4519-A9CF-834DAAFB738F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMLight", "MVVMLight\MVVMLight.csproj", "{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMLightTest", "MVVMLight\MVVMLightTest.csproj", "{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewCSharp6Features", "NewCSharp6Features\NewCSharp6Features.csproj", "{A0440000-313C-48C4-ADF8-2DB6E0C4A086}"
 EndProject
