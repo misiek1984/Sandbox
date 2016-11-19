@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomapperTest", "Automapper\AutomapperTest.csproj", "{35BD6DA2-4DDE-4420-88A6-BE44942CD813}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTest", "Dapper\DapperTest.csproj", "{872E7B5D-E658-4596-B4A7-3674F76C4681}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTo", "LinqTo\LinqTo.csproj", "{22F1EE83-A82B-4458-99C5-142170717F85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageLib", "MessageLib\MessageLib.csproj", "{089EC8F8-DB3C-4514-8B01-8CED3F51B831}"
@@ -14,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePublisher", "MessagePublisher\MessagePublisher.csproj", "{E0831ED7-CAD8-4A38-A7A2-CD86033C5638}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageSubscriber", "MessageSubscriber\MessageSubscriber.csproj", "{469F0D32-64AC-4519-A9CF-834DAAFB738F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMLightTest", "MVVMLight\MVVMLightTest.csproj", "{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewCSharp6Features", "NewCSharp6Features\NewCSharp6Features.csproj", "{A0440000-313C-48C4-ADF8-2DB6E0C4A086}"
 EndProject
@@ -62,20 +56,18 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "aspdotnetcore", "aspdotnetc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox", "Sandbox\Sandbox.csproj", "{4C6FB76C-3206-46B0-B005-2D8275AFB2E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomapperTest", "AutomapperTest\AutomapperTest.csproj", "{35BD6DA2-4DDE-4420-88A6-BE44942CD813}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTest", "DapperTest\DapperTest.csproj", "{872E7B5D-E658-4596-B4A7-3674F76C4681}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMLightTest", "MVVMLightTest\MVVMLightTest.csproj", "{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Release|Any CPU.Build.0 = Release|Any CPU
-		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22F1EE83-A82B-4458-99C5-142170717F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22F1EE83-A82B-4458-99C5-142170717F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22F1EE83-A82B-4458-99C5-142170717F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -92,10 +84,6 @@ Global
 		{469F0D32-64AC-4519-A9CF-834DAAFB738F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{469F0D32-64AC-4519-A9CF-834DAAFB738F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{469F0D32-64AC-4519-A9CF-834DAAFB738F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A0440000-313C-48C4-ADF8-2DB6E0C4A086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0440000-313C-48C4-ADF8-2DB6E0C4A086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0440000-313C-48C4-ADF8-2DB6E0C4A086}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -160,6 +148,18 @@ Global
 		{4C6FB76C-3206-46B0-B005-2D8275AFB2E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C6FB76C-3206-46B0-B005-2D8275AFB2E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C6FB76C-3206-46B0-B005-2D8275AFB2E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BD6DA2-4DDE-4420-88A6-BE44942CD813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872E7B5D-E658-4596-B4A7-3674F76C4681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8965DD-CDD6-4477-8F2D-74D76B68A9CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
